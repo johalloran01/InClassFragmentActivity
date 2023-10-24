@@ -20,15 +20,13 @@ class MainActivity : AppCompatActivity() {
         if(supportFragmentManager.findFragmentById(R.id.fragmentContainerView) !is ImageDisplayFragment)
             supportFragmentManager
                 .beginTransaction()
-                .replace(R.id.fragmentContainerView, imageDisplayFragment)
+                //.add(R.id.fragmentContainerView, imageDisplayFragment)
                 .addToBackStack(null)
                 .setReorderingAllowed(true)
                 .commit()
 
-        override fun imageSelected(itemId : Int) {
-            Toast.makeTest(this, "You selected $itemId", Toast.LENGTH_SHORT).show()
+
         }
 
 
     }
-}
