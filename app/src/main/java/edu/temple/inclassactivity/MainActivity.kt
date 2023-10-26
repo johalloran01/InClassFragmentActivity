@@ -5,11 +5,17 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.FragmentContainerView
+import androidx.lifecycle.ViewModelProvider
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //Instance of a view model scoped to THIS activity
+        val imagesViewModel = ViewModelProvider(this)[ImagesViewModel::class.java]
+
+
 
         // Fetch images into IntArray called imageArray
         val typedArray = resources.obtainTypedArray(R.array.image_ids)
