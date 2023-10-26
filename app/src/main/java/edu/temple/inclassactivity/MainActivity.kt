@@ -22,14 +22,16 @@ class MainActivity : AppCompatActivity() {
         val imageArray = IntArray(typedArray.length()) {typedArray.getResourceId(it, 0)}
         typedArray.recycle()
 
+        imagesViewModel.setImages(imageArray)
+
 
 
         //Find the button
-        val button = findViewById<Button>(R.id.buttonPresent)
+        //val button = findViewById<Button>(R.id.buttonPresent)
 
-        button.setOnClickListener{
-            (supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as ImageDisplayFragment).setImages(imageArray)
-        }
+        //button.setOnClickListener{
+            //(supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as ImageDisplayFragment).setImages(imageArray)
+        //}
 
 
         //val imageDisplayFragment = ImageDisplayFragment.newInstance(imageArray)
