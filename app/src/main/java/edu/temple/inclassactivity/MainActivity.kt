@@ -2,7 +2,9 @@ package edu.temple.inclassactivity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.Toast
+import androidx.fragment.app.FragmentContainerView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,16 +16,26 @@ class MainActivity : AppCompatActivity() {
         val imageArray = IntArray(typedArray.length()) {typedArray.getResourceId(it, 0)}
         typedArray.recycle()
 
-        val imageDisplayFragment = ImageDisplayFragment.newInstance(imageArray)
 
+
+        //Find the button
+        val button = findViewById<Button>(R.id.buttonPresent)
+
+        button.setOnClickListener{
+            (supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as ImageDisplayFragment).setImages(imageArray)
+        }
+
+
+        //val imageDisplayFragment = ImageDisplayFragment.newInstance(imageArray)
         // Attach an instance of ImageDisplayFragment using factory method
-        if(supportFragmentManager.findFragmentById(R.id.fragmentContainerView) !is ImageDisplayFragment)
-            supportFragmentManager
-                .beginTransaction()
+        //if(supportFragmentManager.findFragmentById(R.id.fragmentContainerView) !is ImageDisplayFragment)
+            //supportFragmentManager
+                //.beginTransaction()
                 //.add(R.id.fragmentContainerView, imageDisplayFragment)
-                .addToBackStack(null)
-                .setReorderingAllowed(true)
-                .commit()
+                //.addToBackStack(null)
+                //.setReorderingAllowed(true)
+                //.commit()
+
 
 
         }

@@ -53,9 +53,11 @@ class ImageDisplayFragment : Fragment() {
         images = newImages
 
         val adapter = CustomRecyclerAdapter(newImages)
-
-        //pass to recycler view
-        (view as RecyclerView).adapter = adapter
+        //Check that the view exists
+        view?.run {
+            //pass to recycler view
+            (view as RecyclerView).adapter = adapter
+        }
     }
     companion object {
         fun newInstance(images: IntArray) =
